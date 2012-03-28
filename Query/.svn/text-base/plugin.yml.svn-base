@@ -1,0 +1,82 @@
+name: Query
+main: com.github.thebiologist13.Query
+version: 2.0
+description: Query is for creative servers where players want others to get easy information on an area.
+author: thebiologist13
+commands:
+  setquery:
+    description: This command sets a query to the selected area.
+    permission: query.setquery
+    usage: /setquery <query name>
+  query:
+    description: This command queries the area you are currently standing in.
+    permission: query.query
+    usage: /query
+  delquery:
+    description: This command deletes a query area.
+    permission: query.delquery
+    usage: /delquery <query name>
+  querydesc:
+    description: This command lets the user add or change the query description.
+    permission: query.querydesc
+    usage: /querydesc <query title> <line> <description>
+  qdebug:
+    description: This toggles debug features on the server console.
+    usage: /qdebug
+  qpos1:
+    description: Set selection position 1 where you are standing.
+    usage: /qpos1
+  qpos2:
+    description: Set selection position 1 where you are standing.
+    usage: /qpos2
+  qlist:
+    description: List all queries on the server.
+    usage: /qlist
+  qhelp:
+    description: Help with Query commands.
+    usage: /qhelp
+  qarea:
+    description: Modifies the selection area for setting a new Query.
+    usage: /qarea <expand or contract> <direction> <distance>
+permissions:
+  query.*:
+    description: Gives the user or group all Query permissions.
+    children:
+      query.setquery: true
+      query.query: true
+      query.delquery: true
+      query.querydesc: true
+      query.qlist: true
+      query.pos: true
+      query.qhelp: true
+      query.qarea: true
+      query.debug: true
+  query.setquery:
+    description: Allows the user or group to set a query area.
+    default: false
+  query.query:
+    description: Allows the user or group to query areas.
+    default: true
+  query.delquery:
+    description: Allows the user or group to delete a query area.
+    default: false
+  query.querydesc:
+    description: Allows the user or group to add/change the description of a query.
+    default: false 
+  query.qlist: 
+    description: Allows the user or group to list the queries of the server.
+    default: true
+  query.pos:
+    description: Allows the user or group to set positions.
+    default: false
+  query.qhelp:
+    description: Allows the user or group to see the Query help menu.
+    default: true
+  query.qarea:
+    description: Allows the user or group to modify the size selection area when making a query.
+    default: false 
+  query.debug:
+    description: Allows the user or group to toggle debug mode.
+    default: false
+  
+    
