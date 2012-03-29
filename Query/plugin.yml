@@ -22,21 +22,27 @@ commands:
     usage: /querydesc <query title> <line> <description>
   qdebug:
     description: This toggles debug features on the server console.
+    permission: query.debug
     usage: /qdebug
   qpos1:
     description: Set selection position 1 where you are standing.
+    permission: query.pos
     usage: /qpos1
   qpos2:
     description: Set selection position 1 where you are standing.
+    permission: query.pos
     usage: /qpos2
   qlist:
     description: List all queries on the server.
+    permission: query.qlist
     usage: /qlist
   qhelp:
     description: Help with Query commands.
+    permission: query.qhelp
     usage: /qhelp
   qarea:
     description: Modifies the selection area for setting a new Query.
+    permission: query.qarea
     usage: /qarea <expand or contract> <direction> <distance>
 permissions:
   query.*:

@@ -59,7 +59,6 @@ public class QueryData {
 		} else if(position1.get(p.getName()).getBlockY() < position2.get(p.getName()).getBlockY()) {
 			y2 = true;
 		}
-
 		
 		if(position1.get(p.getName()).getBlockZ() > position2.get(p.getName()).getBlockZ()) {
 			z1 = true;
@@ -119,7 +118,7 @@ public class QueryData {
 				position1.put(p.getName(), newLoc);
 			} else if(y2) {
 				Location newLoc = new Location(p.getWorld(), position2.get(p.getName()).getBlockX(), position2.get(p.getName()).getBlockY() + Integer.parseInt(args[2]), position2.get(p.getName()).getBlockZ());
-				position1.put(p.getName(), newLoc);
+				position2.put(p.getName(), newLoc);
 			} else {
 				Location newLoc = new Location(p.getWorld(), position1.get(p.getName()).getBlockX(), position1.get(p.getName()).getBlockY() + Integer.parseInt(args[2]), position1.get(p.getName()).getBlockZ());
 				position1.put(p.getName(), newLoc);
@@ -142,17 +141,35 @@ public class QueryData {
 	
 	public static void contractSelection(String[] args, Player p) {
 
+		for(int i = 0; i<position1.size(); i++) {
+			Query.debugMsg(position1.toString());
+		}
+		for(int i = 0; i<position2.size(); i++) {
+			Query.debugMsg(position2.toString());
+		}
+		
 		//Which position on X axis is larger.
 		boolean x1 = false, x2 = false;
+		//Which position on Y axis is larger.
+		boolean y1 = false, y2 = false;
 		//Which position on Z axis is larger.
 		boolean z1 = false, z2 = false;
 		
+		if(!position1.containsKey(p.getName()) || !position2.containsKey(p.getName())) {
+			Query.debugMsg("Does not contain player name in position data.");
+			return;
+		}
 		if(position1.get(p.getName()).getBlockX() > position2.get(p.getName()).getBlockX()) {
 			x1 = true;
 		} else if(position1.get(p.getName()).getBlockX() < position2.get(p.getName()).getBlockX()) {
 			x2 = true;
 		}
-
+		
+		if(position1.get(p.getName()).getBlockY() > position2.get(p.getName()).getBlockY()) {
+			y1 = true;
+		} else if(position1.get(p.getName()).getBlockY() < position2.get(p.getName()).getBlockY()) {
+			y2 = true;
+		}
 		
 		if(position1.get(p.getName()).getBlockZ() > position2.get(p.getName()).getBlockZ()) {
 			z1 = true;
@@ -207,11 +224,27 @@ public class QueryData {
 				position1.put(p.getName(), newLoc);
 			}
 		} else if(args[1].equalsIgnoreCase("up")) {
-			Location newLoc = new Location(p.getWorld(), position1.get(p.getName()).getBlockX(), position1.get(p.getName()).getBlockY() + Integer.parseInt(args[2]), position1.get(p.getName()).getBlockZ());
-			position1.put(p.getName(), newLoc);
+			if(y1) {
+				Location newLoc = new Location(p.getWorld(), position2.get(p.getName()).getBlockX(), position2.get(p.getName()).getBlockY() + Integer.parseInt(args[2]), position2.get(p.getName()).getBlockZ());
+				position2.put(p.getName(), newLoc);
+			} else if(y2) {
+				Location newLoc = new Location(p.getWorld(), position1.get(p.getName()).getBlockX(), position1.get(p.getName()).getBlockY() + Integer.parseInt(args[2]), position1.get(p.getName()).getBlockZ());
+				position1.put(p.getName(), newLoc);
+			} else {
+				Location newLoc = new Location(p.getWorld(), position2.get(p.getName()).getBlockX(), position2.get(p.getName()).getBlockY() + Integer.parseInt(args[2]), position2.get(p.getName()).getBlockZ());
+				position2.put(p.getName(), newLoc);
+			}
 		} else if(args[1].equalsIgnoreCase("down")) {
-			Location newLoc = new Location(p.getWorld(), position1.get(p.getName()).getBlockX(), position1.get(p.getName()).getBlockY() - Integer.parseInt(args[2]), position1.get(p.getName()).getBlockZ());
-			position1.put(p.getName(), newLoc);
+			if(y1) {
+				Location newLoc = new Location(p.getWorld(), position1.get(p.getName()).getBlockX(), position1.get(p.getName()).getBlockY() - Integer.parseInt(args[2]), position1.get(p.getName()).getBlockZ());
+				position1.put(p.getName(), newLoc);
+			} else if(y2) {
+				Location newLoc = new Location(p.getWorld(), position2.get(p.getName()).getBlockX(), position2.get(p.getName()).getBlockY() - Integer.parseInt(args[2]), position2.get(p.getName()).getBlockZ());
+				position2.put(p.getName(), newLoc);
+			} else {
+				Location newLoc = new Location(p.getWorld(), position1.get(p.getName()).getBlockX(), position1.get(p.getName()).getBlockY() - Integer.parseInt(args[2]), position1.get(p.getName()).getBlockZ());
+				position1.put(p.getName(), newLoc);
+			}
 		} else {
 			p.sendMessage(ChatColor.DARK_RED + "That isn't a valid direction! Use north, south, east, west, up, or down.");
 		}

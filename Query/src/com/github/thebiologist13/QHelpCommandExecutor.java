@@ -30,7 +30,7 @@ public class QHelpCommandExecutor implements CommandExecutor{
 				Query.promptMsg("* * * * * QUERY VERSION 2.0 HELP * * * * *");
 				Query.promptMsg("qlist -> Lists all queries. ");
 				Query.promptMsg("delquery <query name> -> Deletes the specified query. ");
-				Query.promptMsg("qlist -> Lists all queries. ");
+				Query.promptMsg("qlist -> Lists all Queries across ALL worlds. ");
 				Query.promptMsg("qhelp -> Displays this message.");
 				Query.promptMsg("qdebug -> For developer purpoes, basically spams the console.");
 				Query.promptMsg("* * * * * * * * * * * * * * * * * * * * * ");
@@ -46,7 +46,7 @@ public class QHelpCommandExecutor implements CommandExecutor{
 						player.sendMessage(ChatColor.DARK_PURPLE + "/query" + ChatColor.WHITE + " -> Queries the area you are currently standing in.");
 					}
 					if(checkPerm("setquery")) {
-						player.sendMessage(ChatColor.DARK_PURPLE + "/setquery <query name>" + ChatColor.WHITE + " -> Sets a new query within the posititions set.");
+						player.sendMessage(ChatColor.DARK_PURPLE + "/setquery <query name>" + ChatColor.WHITE + " -> Sets a new query within the positions set.");
 					}
 					if(checkPerm("delquery")) {
 						player.sendMessage(ChatColor.DARK_PURPLE + "/delquery <query name>" + ChatColor.WHITE + " -> Deletes the specified query. CAN NOT BE UNDONE!");
@@ -62,6 +62,9 @@ public class QHelpCommandExecutor implements CommandExecutor{
 					if(checkPerm("qarea")) {
 						player.sendMessage(ChatColor.DARK_PURPLE + "/qarea <expand:contract> <direction> <amount>" + ChatColor.WHITE + " -> Expands or contracts the area you have selected. " +
 								"Accepts North, South, East, West, Up, or Down for direction.");
+					}
+					if(checkPerm("qlist")) {
+						player.sendMessage(ChatColor.DARK_PURPLE + "/qlist" + ChatColor.WHITE + " -> Lists all Queries across ALL worlds.");
 					}
 					player.sendMessage(ChatColor.DARK_PURPLE + "/qhelp" + ChatColor.WHITE + " -> Displays this message.");
 					player.sendMessage(ChatColor.DARK_PURPLE + "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
