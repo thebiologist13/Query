@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class Query extends JavaPlugin{
-
+	
 	protected static FileConfiguration config;
 	
 	public static boolean debug = false;
@@ -14,8 +14,10 @@ public class Query extends JavaPlugin{
 	static Logger log = Logger.getLogger("Minecraft");
 	
 	public void onEnable() {	
+		
 		//Player Listener
 		getServer().getPluginManager().registerEvents(new QueryPlayerListener(this), this);
+		getServer().getPluginManager().registerEvents(new QueryPlayerMoveListener(this), this);
 		
 		//Commands
 		QueryCommandExecutor queryExecutor = new QueryCommandExecutor(this);
@@ -25,6 +27,7 @@ public class Query extends JavaPlugin{
 		DelQueryCommandExecutor delQueryExecutor = new DelQueryCommandExecutor(this);
 		QueryDescCommandExecutor queryDescExecutor = new QueryDescCommandExecutor(this);
 		QHelpCommandExecutor qHelpExecutor = new QHelpCommandExecutor(this);
+		QMsgCommandExecutor qMsgExecutor = new QMsgCommandExecutor(this);
 		getCommand("query").setExecutor(queryExecutor);
 		getCommand("setquery").setExecutor(setQueryCommandExecutor);
 		getCommand("qdebug").setExecutor(qDebugExecutor);
@@ -35,6 +38,7 @@ public class Query extends JavaPlugin{
 		getCommand("qpos1").setExecutor(setQueryCommandExecutor);
 		getCommand("qpos2").setExecutor(setQueryCommandExecutor);
 		getCommand("qarea").setExecutor(setQueryCommandExecutor);
+		getCommand("qmsg").setExecutor(qMsgExecutor);
 		
 		/*
 		 * Config
@@ -53,11 +57,11 @@ public class Query extends JavaPlugin{
 		
 		debug = config.getBoolean("debugOn");
 		
-		log.info("Query version 2.0 by thebiologist13 has been enabled!");
+		log.info("Query version 2.1 by thebiologist13 has been enabled!");
 	}
 	
 	public void onDisable() {
-		log.info("Query version 2.0 by thebiologist13 has been disabled!");
+		log.info("Query version 2.1 by thebiologist13 has been disabled!");
 	}
 	
 	//Prints a debug message

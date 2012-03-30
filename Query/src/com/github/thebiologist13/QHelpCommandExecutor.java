@@ -66,6 +66,9 @@ public class QHelpCommandExecutor implements CommandExecutor{
 					if(checkPerm("qlist")) {
 						player.sendMessage(ChatColor.DARK_PURPLE + "/qlist" + ChatColor.WHITE + " -> Lists all Queries across ALL worlds.");
 					}
+					if(checkPerm("qmsg")) {
+						player.sendMessage(ChatColor.DARK_PURPLE + "/qmsg" + ChatColor.WHITE + " -> Sets and removes enter and exit messages for a query.");
+					}
 					player.sendMessage(ChatColor.DARK_PURPLE + "/qhelp" + ChatColor.WHITE + " -> Displays this message.");
 					player.sendMessage(ChatColor.DARK_PURPLE + "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
 				}

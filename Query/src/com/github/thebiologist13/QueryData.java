@@ -16,6 +16,7 @@ public class QueryData {
 	//Position variables
 	static HashMap<String, Location> position1 = new HashMap<String, Location>();
 	static HashMap<String, Location> position2 = new HashMap<String, Location>();
+	static Location onePrevious = null;
 	
 	/*
 	 * These unfathomable methods are used to modify the selection area.

@@ -1,3 +1,4 @@
 Query Changelog:
 
 v2.0 - First Working Release
+v2.1 - Added Enter/Exit Messages

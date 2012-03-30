@@ -1,6 +1,6 @@
 name: Query
 main: com.github.thebiologist13.Query
-version: 2.0
+version: 2.1
 description: Query is for creative servers where players want others to get easy information on an area.
 author: thebiologist13
 commands:
@@ -44,6 +44,10 @@ commands:
     description: Modifies the selection area for setting a new Query.
     permission: query.qarea
     usage: /qarea <expand or contract> <direction> <distance>
+  qmsg:
+    description: Sets and removes enter and exit messages for a query.
+    permission: query.qmsg
+    usage: /qmsg <set or remove> <enter or exit> <query name> [message]
 permissions:
   query.*:
     description: Gives the user or group all Query permissions.
@@ -57,6 +61,7 @@ permissions:
       query.qhelp: true
       query.qarea: true
       query.debug: true
+      query.qmsg: true
   query.setquery:
     description: Allows the user or group to set a query area.
     default: false
@@ -84,5 +89,7 @@ permissions:
   query.debug:
     description: Allows the user or group to toggle debug mode.
     default: false
-  
+  query.qmsg:
+    description: Allows the user or group to set enter and exit messages for a query.
+    default: false
     

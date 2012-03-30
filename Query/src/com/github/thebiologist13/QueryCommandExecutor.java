@@ -34,7 +34,7 @@ public class QueryCommandExecutor implements CommandExecutor {
 		if(cmd.getName().equalsIgnoreCase("query")) {
 			
 			if(player == null) {
-				Query.debugMsg("You can only use the command: '" + cmd.getName() + "' in-game.");
+				Query.promptMsg("You can only use the command: '" + cmd.getName() + "' in-game.");
 				return true;
 			} 
 			
@@ -179,9 +179,9 @@ public class QueryCommandExecutor implements CommandExecutor {
 	
 	//Checks if a player is within two coordinates
 	public static boolean isWithin(Player p, Location l1, Location l2) {
-		if(QueryBoundaryCheck.isWithinX(player, l1.getBlockX(), l2.getBlockX()) && 
-				QueryBoundaryCheck.isWithinY(player, l1.getBlockY(), l2.getBlockY()) && 
-				QueryBoundaryCheck.isWithinZ(player, l1.getBlockZ(), l2.getBlockZ())) {
+		if(QueryBoundaryCheck.isWithinX(player.getLocation(), l1.getBlockX(), l2.getBlockX()) && 
+				QueryBoundaryCheck.isWithinY(player.getLocation(), l1.getBlockY(), l2.getBlockY()) && 
+				QueryBoundaryCheck.isWithinZ(player.getLocation(), l1.getBlockZ(), l2.getBlockZ())) {
 			return true;
 		} else {
 			return false;
